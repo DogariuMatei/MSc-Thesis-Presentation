@@ -1,0 +1,89 @@
+% =====================================================================
+% Segment 1 --- The question (defense slides 2--4). Template frames below
+% are kept as a feature reference; new content is added above them.
+% =====================================================================
+
+{
+  \renewcommand{\sectionsubtitle}{Distribution without an operator}
+  \section{The question}
+}
+
+
+\begin{frame}{Centralized distribution is a single point of control}
+  Mainstream content distribution concentrates operational control on one entity
+  that owns both the hardware and the catalog.
+  \begin{itemize}
+    \item One operator decides what stays online; availability depends on its
+      finances, its policies, and its legal exposure.
+    \item Peer-to-peer protocols (BitTorrent, IPFS) distribute the \emph{data}
+      across many nodes --- so takedown is hard --- but the \emph{hardware} is
+      still owned and kept alive by humans.
+  \end{itemize}
+
+  \begin{alertblock}{The open gap}
+    Can the \textbf{infrastructure layer itself} be operator-independent ---
+    leasing and paying for its own hardware, with no human running it after genesis?
+  \end{alertblock}
+\end{frame}
+
+
+{
+  \setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
+  \leftfooterwhitetrue
+  \begin{frame}{Research question}
+    \begin{columns}[T]
+      \begin{textcolumn}
+        \color{white}\large
+        Can a network of autonomous software agents, seeded by a single
+        human-initiated genesis node and controlled only by inherited economic
+        parameters, \textbf{survive} and \textbf{grow} without further human
+        intervention?
+      \end{textcolumn}
+      \begin{textcolumn}
+        Read as the hypothesis under test: two outcomes must \emph{both} hold ---
+        \textcolor{tud Orange}{persistence} and \textcolor{tud Orange}{expansion}
+        --- with control reduced to inherited parameters and no human in the loop
+        after genesis.
+
+        Falsifiable: the closed-system run is a prediction the data must meet.
+      \end{textcolumn}
+    \end{columns}
+  \end{frame}
+}
+\setlength{\splitpos}{0pt}\leftfooterwhitefalse % reset stateful split/footer
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\footerinfootnotestrue % full-reference footnotes -> move footer into footnote band
+\begin{frame}{Where this sits scientifically}
+  \small
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      Prior self-replicators ran on \emph{simulated} resources:
+      \begin{itemize}
+        \item von Neumann's automata\cite{vonneumann} and Ray's
+          \textbf{Tierra}\cite{tierra} --- organisms competing for simulated CPU
+          and RAM.
+        \item DAOs and autonomic computing (MAPE-K) --- decentralized control over
+          virtual, quota-based resources.
+      \end{itemize}
+
+      \textcolor{tud Orange}{\textbf{Novelty:}} the first self-replicator on
+      \textbf{real, market-bought infrastructure paid for with real money} ---
+      each child is a leased VPS.
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      Three contributions:
+      \begin{enumerate}
+        \item \textbf{Engineering} --- first self-replicating economic agent that
+          buys real infrastructure on an open market.
+        \item \textbf{Method} --- unmodified production code run against a replica
+          Bitcoin network and a mock VPS marketplace.
+        \item \textbf{Empirical} --- fleet dynamics and one heritable trait under
+          selection: a prediction met, one disconfirmed.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+}

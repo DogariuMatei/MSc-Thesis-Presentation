@@ -1,0 +1,59 @@
+# Editor / IDE
+.idea
+
+# Project-local (not for sharing)
+CLAUDE.md
+CLAUDE.local.md
+TODO.md
+presentation.md
+
+# ---------------------------------------------------------------------------
+# LaTeX build artifacts (all regenerated on every compile — never commit)
+# ---------------------------------------------------------------------------
+
+# Core auxiliary
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.out
+*.fls
+*.fot
+
+# latexmk
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+
+# Bibliography (biblatex + biber)
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*-blx.aux
+*-blx.bib
+
+# Beamer
+*.nav
+*.snm
+*.vrb
+*.pre
+
+# Index / glossary / acronyms (in case you add them later)
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.glg
+*.acn
+*.acr
+*.alg
+
+# Misc intermediates
+*.dvi
+*.xdv
+*-converted-to.*

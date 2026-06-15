@@ -1,0 +1,93 @@
+%
+% Segment 5 --- Viability & validity (slides 17--18). Steps back from the runs
+% to ask what they cost and what they prove. No new figures: slide 17 distills
+% the storage-economics table to the cost comparison; slide 18 is the
+% internal-vs-external validity split. Numbers verbatim from the thesis
+% (conclusion.tex, limitations.tex, discussion.tex).
+%
+
+{
+  \renewcommand{\sectionsubtitle}{Economics, and the limits of the evidence}
+  \section{Viability \& validity}
+}
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\footerinfootnotestrue % full-reference footnote -> move footer into footnote band
+\begin{frame}{Not cost-competitive --- and that is the point}
+  \framesubtitle{Storage economics}
+  \small
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.44\textwidth}
+      \textbf{Cost per TB-month}
+
+      \smallskip
+      \begin{tabular}{@{}lr@{}}
+        EternalSeedBox            & \textbf{€241} \\
+        Commercial object storage & €20--25 \\
+        \hline
+        Premium                   & \(\approx 10\times\) \\
+      \end{tabular}
+
+      \smallskip
+      {\footnotesize Commercial \(=\) object-storage list
+      price.\cite{cloud_storage_pricing}}
+
+      \medskip
+      {\footnotesize Break-even \textbf{€3.27 / node / day}
+      (€98 per 30 d, 400 GB served).}
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \begin{block}{A deliberate niche, not a general store}
+        Each node pays \textbf{retail VPS} --- no economies of scale, so the rate
+        cannot match commercial storage. The premium buys availability that
+        \textbf{survives takedown} and open-source accountability. The market is
+        users whose content no one else will host, funding the infrastructure
+        directly.
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \textcolor{tud Orange}{\textbf{Competitive only where availability itself is the
+  product.}}
+\end{frame}
+}
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\begin{frame}{What the runs establish --- and what they cannot}
+  \framesubtitle{Threats to validity}
+  \small
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \begin{exampleblock}{Internal validity --- strong}
+        \begin{itemize}
+          \item Unmodified production code against faithful \textbf{Bitcoin} and
+            \textbf{VPS-marketplace} replicas.
+          \item Replication verified under \textbf{both} the closed and income
+            conditions.
+          \item The closed-system prediction was met.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{alertblock}{External validity --- open}
+        \begin{itemize}
+          \item Node cap 60 --- host ceiling (\(\sim\)60--80 containers), not
+            economics.
+          \item Regtest drops \(\sim\)50\% of tx \(\to\) income set \(10\times\)
+            rent \(\to\) economy inflated.
+          \item Single VPS provider (SporeStack) --- no failover.
+          \item Revenue mechanism not yet designed.
+          \item Fixed genesis catalog.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+
+  \textcolor{tud Orange}{\textbf{The mechanism is validated; viability is not ---
+  by construction.}}
+\end{frame}
+}

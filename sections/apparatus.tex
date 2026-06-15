@@ -1,0 +1,132 @@
+%
+% Segment 2 --- The apparatus (slides 5--8). Frames the system as
+% an experimental apparatus: how a node lives, reproduces, and varies.
+%
+
+{
+  \renewcommand{\sectionsubtitle}{How a node lives, reproduces, and varies}
+  \section{The apparatus}
+}
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\begin{frame}{System at a glance: one autonomous node}
+  \small
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      A node is one Linux process (the \emph{Orchestrator}) bundling:
+      \begin{itemize}
+        \item VPS leased via \textbf{SporeStack} (a Bitcoin-native marketplace).
+        \item \textbf{Bitcoin wallet} --- pays its own bills.
+        \item \textbf{libtorrent seedbox} --- serves Creative Commons content.
+        \item \textbf{IPv8 overlay} --- gossips health telemetry to peers.
+        \item \textbf{Decision logic} --- the genome.
+      \end{itemize}
+
+      \textcolor{tud Orange}{No central authority:} genesis is the only human
+      action; thereafter the fleet self-governs.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/NodeArchitectureSeedBox.jpg}\\[0.5ex]
+      {\footnotesize Arrows trace Bitcoin movements.}
+    \end{column}
+  \end{columns}
+\end{frame}
+}
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\begin{frame}{The decision loop}
+  \framesubtitle{The genome's control logic}
+  \small
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{figures/decision_loop_statemachine.png}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      Every 12 h, the node takes the first action whose guard passes:
+      \begin{enumerate}
+        \item \textbf{Failsafe} --- runway \textcolor{tud Orange}{< 2 days}
+          \(\to\) sweep funds to the healthiest peer.
+        \item \textbf{Top-up} --- runway < 30 days \(\to\) buy VPS credit
+          (\emph{doesn't return} --- re-scans, can spawn the same tick).
+        \item \textbf{Spawn} --- if eligible \(\to\) provision + fund a child.
+        \item \textbf{Idle} --- wait for the next tick.
+      \end{enumerate}
+
+      \medskip
+      \textbf{Identical code} runs in every node --- no node is special.
+    \end{column}
+  \end{columns}
+\end{frame}
+}
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\begin{frame}{Reproduction mechanics}
+  \framesubtitle{The constraint against self-bankruptcy}
+  \small
+  \begin{block}{Check runway \emph{after} the spawn, not before}
+    A node spawns only if its \textbf{post-spawn total runway}
+    \(\geq 60\times(1+\text{caution})\) days \emph{and} its wallet can pay the
+    child's VPS. Total runway \(=\) pre-paid VPS days \(+\) SporeStack credit
+    \(+\) convertible Bitcoin.
+  \end{block}
+
+  \begin{itemize}
+    \item The child starts with a \textbf{30-day} pre-paid VPS and inherits
+      \textbf{40\%} of the Bitcoin remaining \emph{after} the parent covers the
+      child's invoice --- a parent never commits to an inheritance it can't cover.
+    \item Pipeline: mutate caution \(\to\) provision VPS + fresh wallet \(\to\)
+      deploy code over SSH \(\to\) transfer inheritance.
+  \end{itemize}
+\end{frame}
+}
+
+
+{
+  \setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
+  \leftfooterwhitetrue
+  \begin{frame}{The heritable trait}
+    \begin{columns}[T]
+      \begin{textcolumn}
+        \color{white}\large
+        \textbf{Caution} --- the single gene under selection.
+
+        \medskip
+        One value \(c \in [0.35, 0.9]\); the genesis node starts at \(c = 0.5\).
+        Everything else is inherited identically.
+      \end{textcolumn}
+      \begin{textcolumn}
+        \footnotesize
+        It scales the spawn threshold \(60\times(1+c)\):
+
+        \smallskip
+        \begin{tabular}{cc}
+          caution \(c\) & threshold \\
+          0.35 & 81 days \\
+          0.5  & 90 days \\
+          0.9  & 114 days \\
+        \end{tabular}
+
+        \smallskip
+        Low caution \(=\) spawn sooner; high \(=\) retain more.
+
+        \smallskip
+        Mutation:
+        \(c_{\text{child}} = c_{\text{parent}} + \mathcal{N}(0,0.05)
+        + 0.2\,(0.5 - c_{\text{parent}})\), clamped --- Gaussian drift with
+        mean reversion to 0.5.
+
+        \smallskip
+        \textcolor{tud Orange}{How it actually evolves \(\to\) Results}
+      \end{textcolumn}
+    \end{columns}
+  \end{frame}
+}
+\setlength{\splitpos}{0pt}\leftfooterwhitefalse % reset stateful split/footer

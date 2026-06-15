@@ -1,0 +1,76 @@
+%
+% Segment 6 --- Conclusion (slides 19--20). Two split frames that bookend the
+% talk: slide 19 answers the research question (visual callback to slide 3) and
+% restates the three contributions; slide 20 is future work + a minimal thanks.
+% \splitpos and the footer-white flag are stateful --- set inside the group and
+% reset after it.
+%
+
+{
+  \renewcommand{\sectionsubtitle}{The answer, and what comes next}
+  \section{Conclusion}
+}
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
+\leftfooterwhitetrue
+\begin{frame}{The answer}
+  \begin{columns}[T]
+    \begin{textcolumn}
+      \color{white}\large
+      \textbf{Yes --- conditional.}
+
+      \medskip
+      A fleet sustains and grows itself after genesis \textbf{when its income
+      covers the per-node rent.}
+    \end{textcolumn}
+    \begin{textcolumn}
+      \small
+      \textbf{Three contributions:}
+      \begin{enumerate}
+        \item \textbf{Engineering} --- first self-replicating economic agent that
+          buys real infrastructure on an open market.
+        \item \textbf{Method} --- unmodified production code against faithful
+          Bitcoin + VPS-marketplace replicas.
+        \item \textbf{Empirical} --- fleet dynamics and one heritable trait under
+          selection: a prediction met, one disconfirmed.
+      \end{enumerate}
+    \end{textcolumn}
+  \end{columns}
+\end{frame}
+}
+\setlength{\splitpos}{0pt}\leftfooterwhitefalse % reset stateful split/footer
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
+\leftfooterwhitetrue
+\begin{frame}{Future work}
+  \begin{columns}[T]
+    \begin{textcolumn}
+      \color{white}
+      {\Large\textbf{Thank you}}
+
+      \medskip
+      {\large Questions welcome}
+    \end{textcolumn}
+    \begin{textcolumn}
+      \small
+      \begin{itemize}
+        \item A \textbf{payment incentive} --- make consumers fund seeding
+          directly (the missing revenue layer the rest of the system already
+          supports).
+        \item \textbf{Decentralized moderation} --- resolve removal requests
+          across a fleet with no central authority (prerequisite for
+          user-contributed content).
+        \item \textbf{Long drought, no node cap} --- to test the unconfirmed
+          survival half of the caution hypothesis.
+      \end{itemize}
+    \end{textcolumn}
+  \end{columns}
+\end{frame}
+}
+\setlength{\splitpos}{0pt}\leftfooterwhitefalse % reset stateful split/footer
