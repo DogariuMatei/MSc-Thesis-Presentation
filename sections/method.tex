@@ -1,86 +1,78 @@
-%
-% Segment 3 --- The method (slides 9--10). Makes the internal-validity
-% argument: the lab runs the unmodified production code (only the network
-% layer is swapped), and the two experiments differ by one income knob ---
-% with the honesty caveat that income sits ~10x above realistic rate.
-%
 
 {
-  \renewcommand{\sectionsubtitle}{What runs in the lab is the code that would run live}
-  \section{The method}
+  \renewcommand{\sectionsubtitle}{Testing the node code offline and without cost}
+  \section{Methodology}
 }
 
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
 \begin{frame}{Faithful exercise of production code}
-  \framesubtitle{Internal validity}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.44\textwidth}
       \begin{block}{Unchanged from live deployment}
-        Entrypoint, orchestrator, Bitcoin wallet, and IPv8 community run
-        \textbf{identically} to a real deployment --- the only edits concern
-        compressed-time intervals: 1 sim-day \(\approx\) \qty{22}{s}, a 90-sim-day
-        runway \(\approx\) \qty{32}{min}.
+        Node code is executed \textbf{identically} to a real deployment. Only changes relate to the compressed-time intervals: 1 sim-day \(\approx\) \qty{22}{s}.
       \end{block}
     \end{column}
     \begin{column}{0.52\textwidth}
-      \textbf{Swapped --- network layer only:}
+    \smallskip
+    \smallskip
+      \textbf{Swapped the network layer only:}
       \begin{itemize}
-        \item Bitcoin \(\to\) private \textbf{regtest} (1\,s blocks), same Python
-          library paths.
-        \item SporeStack API \(\to\) host-side \textbf{mock}, identical endpoints;
-          invoices paid in real regtest BTC, mined locally.
-        \item Each ``server'' \(=\) a real \textbf{Alpine LXC container} (own FS /
-          PID tree / IP); parent deploys over the production SSH pipeline.
-        \item Peer discovery via the same IPv8 tracker; a bootstrap container boots
-          first, keeping the fleet off the public Internet.
+        \item Bitcoin \(\to\) private \textbf{regtest}, node reuses same paths.
+        \item SporeStack API \(\to\) host-side \textbf{mock}, identical endpoints.
+          Invoices paid in real regtest BTC.
+        \item Each ``server'' \(=\) a real \textbf{Alpine LXC container}. Parent deploys over the production SSH pipeline.
+        \item Peer discovery via the same IPv8 tracker. An IPv8 bootstrap server keeps the fleet offline.
       \end{itemize}
     \end{column}
   \end{columns}
-
-  \textcolor{tud Orange}{\textbf{What runs in the lab is the code that would run live.}}
+  \smallskip
+  \smallskip
+  \smallskip
+  \smallskip
+  \textcolor{tud Orange}{\textbf{What runs locally is the code that would run on a live deployment.}}
 \end{frame}
 }
 
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{Two experiments, one income knob}
-  \framesubtitle{Closed system vs. open system}
+\begin{frame}{Two experiments}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.48\textwidth}
+    \smallskip
       \textbf{No-income run} --- closed system
       \begin{itemize}
-        \item Genesis seeded with one \textbf{€10,000} lump sum; no exogenous
-          income.
+        \item Genesis seeded with  \textbf{only €10,000}.
         \item Every node spends only its birth runway \(+\) inheritance.
         \item A \textcolor{tud Orange}{falsifiable closed-system prediction}: the
           fleet cannot sustain itself indefinitely.
-        \item \texttt{faucet\_enabled = false}
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
+    \smallskip
       \textbf{Income run} --- open system
       \begin{itemize}
-        \item Host-side income pays the fleet; per-node income \(\approx\)
-          invariant (payout scales with node count).
-        \item Uneven daily shares (Dirichlet draw).
-        \item \textbf{Node cap 60}: income suspended at 60 nodes, resumed below 40
+        \item Mock income pays the fleet
+        \item Per-node income \(\approx\)
+          invariant (scales with node count).
+        \item Uneven daily shares.
+        \item \textbf{Node cap}: income suspended at 60 nodes, resumed at 40
           \(\to\) alternating growth/drought.
-        \item \texttt{faucet\_enabled = true}
       \end{itemize}
     \end{column}
   \end{columns}
-
+ \smallskip
+ \smallskip
+ \smallskip
   \vspace{-1ex}
-  \begin{alertblock}{Honesty up front}
-    Under load the regtest network drops \(\sim\)half of all broadcasts, so income
-    is set at \textbf{\(\sim\)10\(\times\) per-node rent} --- well above any realistic
-    seeding rate. \textbf{The income run tests fleet mechanics under favorable
-    conditions, not economic viability.}
+  \begin{alertblock}{One caveat}
+    Under load, the regtest drops \(\sim\)half of all broadcasts, so income
+    is set at \textbf{\(\sim\)10\(\times\) per-node rent}. \textbf{The income run tests fleet mechanics under favorable
+    conditions, not its economic viability.}
   \end{alertblock}
 \end{frame}
 }

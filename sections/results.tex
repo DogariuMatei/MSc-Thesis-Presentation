@@ -1,9 +1,3 @@
-%
-% Segment 4 --- Results, merged with Discussion (slides 11--16). The core of
-% the talk: one plot + its interpretation per slide. The on-slide text is the
-% mechanism behind the shape; the obvious graph-readout narration is left for
-% the presenter to say aloud. Numbers are verbatim from the thesis.
-%
 % Layout note: the footer (TUD logo + date) is an absolute textpos overlay at
 % the page bottom, NOT reserved body space --- so beamer never warns about it,
 % but content reaching the bottom ~0.1\paperheight collides with the logo.
@@ -12,28 +6,26 @@
 %
 
 {
-  \renewcommand{\sectionsubtitle}{One plot, one mechanism --- a prediction met and one disconfirmed}
+  \renewcommand{\sectionsubtitle}{Mechanics confirmed, hypothesis tested}
   \section{Results}
 }
 
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{No-income run: a fixed budget, predictably spent}
-  \framesubtitle{Closed system}
-  \centerline{\includegraphics[width=0.48\linewidth]{figures/population_no_faucet.png}}
+\begin{frame}{No-income run}
+\smallskip
+\smallskip
+\smallskip
+  \framesubtitle{Fixed budget predictably spent?}
+  \centerline{\includegraphics[width=0.6\linewidth]{figures/population_no_faucet.png}}
   \smallskip
   \small
   \begin{itemize}
-    \item With no income every €3.27 buys exactly one node-day, so the fleet's
-      \textbf{total lifespan is fixed} at 3061 node-days (a mean near 93 days across
-      33 nodes).
-    \item Births front-load while capital is concentrated; the fleet then only
-      \emph{loses} nodes.
-    \item Long-lived survivors are \textbf{not luck} --- the failsafe sweeps a dying
-      node's balance to its richest peer.
+    \item Every €3.27 buys exactly one day, so the fleet's
+      \textbf{total lifespan is} at 3061 node-days (mean 93 days @ 33 nodes).
+    \item One ``old'' survivor, as the failsafe concentrates residual funds into one node.
   \end{itemize}
-
   \textcolor{tud Orange}{\textbf{The closed-system prediction holds: a once-funded
   fleet cannot self-sustain.}}
 \end{frame}
@@ -42,21 +34,19 @@
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{The clusters were predicted before the run}
-  \framesubtitle{Lifespans, no income}
-  \centerline{\includegraphics[width=0.42\linewidth]{figures/lifespan_hist_no_faucet.png}}
-  \smallskip
-  \small
-  \begin{itemize}
-    \item Each cluster is a spawn constant fixed \emph{a priori}: \textbf{90 d} is
-      the post-spawn floor \(60(1{+}c)\) at \(c=0.5\) --- a band over 81--114 d as
-      caution varies; \textbf{60 d} is one inheritance step above the starter;
-      \textbf{30 d} is the bare starter runway.
-  \end{itemize}
+\begin{frame}{The lifespan clusters were predictable}
+\smallskip
+\smallskip
+\smallskip
+  \centerline{\includegraphics[width=0.65\linewidth]{figures/lifespan_hist_no_faucet.png}}
+
+\small
+Each cluster is a spawn constant: \textbf{90 d} is
+      the post-spawn runway any parent retains. \textbf{60 d} and \textbf{30 d} are the last two generations of children.
+  
 
   \begin{exampleblock}{Specification met}
-    Theory fixes the cluster positions before any data exists; the histogram lands
-    on them --- the cleanest, most falsifiable result.
+    The cluster positions should be fixed, with the histogram confirming.
   \end{exampleblock}
 \end{frame}
 }

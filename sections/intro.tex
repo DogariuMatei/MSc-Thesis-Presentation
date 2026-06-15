@@ -1,28 +1,22 @@
-% =====================================================================
-% Segment 1 --- The question (defense slides 2--4). Template frames below
-% are kept as a feature reference; new content is added above them.
-% =====================================================================
-
 {
-  \renewcommand{\sectionsubtitle}{Distribution without an operator}
-  \section{The question}
+  \renewcommand{\sectionsubtitle}{Content distribution without a human operator}
+  \section{Research Angle}
 }
 
 
 \begin{frame}{Centralized distribution is a single point of control}
-  Mainstream content distribution concentrates operational control on one entity
-  that owns both the hardware and the catalog.
+  Mainstream content distribution concentrates control on one entity
+  that owns both the hardware and the content.
   \begin{itemize}
-    \item One operator decides what stays online; availability depends on its
-      finances, its policies, and its legal exposure.
-    \item Peer-to-peer protocols (BitTorrent, IPFS) distribute the \emph{data}
-      across many nodes --- so takedown is hard --- but the \emph{hardware} is
-      still owned and kept alive by humans.
+    \item An operator decides what stays online. Availability depends
+      on profitability, policies, and legality.
+    \item Peer-to-peer protocols distribute the content
+      across many nodes, but the hardware is
+      still \emph{managed} by humans.
   \end{itemize}
 
-  \begin{alertblock}{The open gap}
-    Can the \textbf{infrastructure layer itself} be operator-independent ---
-    leasing and paying for its own hardware, with no human running it after genesis?
+  \begin{alertblock}{The open research gap}
+    Can the \textbf{infrastructure layer itself} be operator-independent, with no human controlling it after genesis?
   \end{alertblock}
 \end{frame}
 
@@ -34,18 +28,17 @@
     \begin{columns}[T]
       \begin{textcolumn}
         \color{white}\large
-        Can a network of autonomous software agents, seeded by a single
-        human-initiated genesis node and controlled only by inherited economic
+        Can a network of autonomous software agents, controlled only by inherited economic
         parameters, \textbf{survive} and \textbf{grow} without further human
         intervention?
       \end{textcolumn}
       \begin{textcolumn}
-        Read as the hypothesis under test: two outcomes must \emph{both} hold ---
-        \textcolor{tud Orange}{persistence} and \textcolor{tud Orange}{expansion}
-        --- with control reduced to inherited parameters and no human in the loop
-        after genesis.
-
+        The hypothesis under test: two outcomes must both hold, fleet
+        \textcolor{tud Orange}{persistence} and \textcolor{tud Orange}{expansion},
+        with automated control and no human in the loop after genesis.
+        
         Falsifiable: the closed-system run is a prediction the data must meet.
+        %TODO: what does this even mean lol. make it simpler, more understandable
       \end{textcolumn}
     \end{columns}
   \end{frame}
@@ -56,22 +49,22 @@
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
 \footerinfootnotestrue % full-reference footnotes -> move footer into footnote band
+% TODO: make these damn references smaller in font or smth, theyre massive
 \begin{frame}{Where this sits scientifically}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.48\textwidth}
-      Prior self-replicators ran on \emph{simulated} resources:
+      Prior self-replicators ran on simulated resources:
       \begin{itemize}
         \item von Neumann's automata\cite{vonneumann} and Ray's
-          \textbf{Tierra}\cite{tierra} --- organisms competing for simulated CPU
+          Tierra\cite{tierra}. Running on simulated CPU cycles
           and RAM.
-        \item DAOs and autonomic computing (MAPE-K) --- decentralized control over
-          virtual, quota-based resources.
+        \item DAOs and autonomic computing --- decentralized control over
+          virtual, quota-based resources. % this needs to be more understandable, makes no sense.
       \end{itemize}
 
-      \textcolor{tud Orange}{\textbf{Novelty:}} the first self-replicator on
-      \textbf{real, market-bought infrastructure paid for with real money} ---
-      each child is a leased VPS.
+      \textcolor{tud Orange}{\textbf{Research Novelty:}} first self-replicating system on
+      \textbf{real infrastructure paid for with real money}.
     \end{column}
     \begin{column}{0.48\textwidth}
       Three contributions:
@@ -81,7 +74,7 @@
         \item \textbf{Method} --- unmodified production code run against a replica
           Bitcoin network and a mock VPS marketplace.
         \item \textbf{Empirical} --- fleet dynamics and one heritable trait under
-          selection: a prediction met, one disconfirmed.
+          selection.
       \end{enumerate}
     \end{column}
   \end{columns}
