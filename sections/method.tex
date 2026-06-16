@@ -23,7 +23,7 @@
         \item Bitcoin \(\to\) private \textbf{regtest}, node reuses same paths.
         \item SporeStack API \(\to\) host-side \textbf{mock}, identical endpoints.
           Invoices paid in real regtest BTC.
-        \item Each ``server'' \(=\) a real \textbf{Alpine LXC container}. Parent deploys over the production SSH pipeline.
+        \item VPS \(\to\) local \textbf{Alpine LXC container}. Parent deploys over the production SSH pipeline.
         \item Peer discovery via the same IPv8 tracker. An IPv8 bootstrap server keeps the fleet offline.
       \end{itemize}
     \end{column}

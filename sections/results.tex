@@ -54,44 +54,32 @@ Each cluster is a spawn constant: \textbf{90 d} is
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{Income run: persistence, and an artifact}
+\begin{frame}{Income run}
   \framesubtitle{Open system}
-  \centerline{\includegraphics[width=0.54\linewidth]{figures/population_faucet.png}}
-  \smallskip
+  \centerline{\includegraphics[width=0.60\linewidth]{figures/population_faucet.png}}
   \small
   \begin{itemize}
-    \item The 40--80 oscillation is an \textbf{artifact of the node cap}: the host
-      tops out near 80 containers, so income is cut at 60 nodes and restored below
-      40.
-    \item Underneath hides a real self-limiting dynamic --- each spawn spreads
-      capital over more nodes, shrinking per-node surplus --- but at these sizes the
-      cap masks it (\(\to\) future work).
+    \item The 40--80 swings are \textbf{caused by the node cap}, as income is cut at 60 nodes and restored at 40.
+    \item Each spawn spreads capital over more nodes, shrinking per-node surplus. At these node counts, the cap masks it (\(\to\) future work).
   \end{itemize}
-
-  \textcolor{tud Orange}{\textbf{Income above per-node rent turns a 153-day die-off
-  into persistence past 510 days.}}
+  \textcolor{tud Orange}{\textbf{Introducing income makes the fleet persist past 510 days.}}
 \end{frame}
 }
 
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{Survival without longevity}
-  \framesubtitle{Lifespans, with income}
-  \centerline{\includegraphics[width=0.42\linewidth]{figures/lifespan_hist_faucet.png}}
+\begin{frame}{Survival Distribution}
   \smallskip
+  \centerline{\includegraphics[width=0.55\linewidth]{figures/lifespan_hist_faucet.png}}
   \small
   \begin{itemize}
-    \item Uneven early income (Dirichlet shares) splits the fleet: a node drawing
-      above-median income early crosses the spawn threshold with a large surplus and
-      keeps 60\% of it, so \textbf{early wealth compounds} into a few long-lived
-      lineages.
+    \item Uneven early income splits the fleet, a node receiving more income early keeps large surplus, so \textbf{early wealth compounds} into a few long-lived nodes.
   \end{itemize}
 
-  \begin{block}{The turnover principle}
-    Survival needs only \emph{some} node holding a surplus, so a small well-funded
-    minority replaces the short-lived majority --- the fleet tolerates high turnover
-    by design.
+  \begin{block}{High turnover}
+    Survival only needs \emph{some} node holding a surplus, so a well-funded
+    minority eventually replaces the short-lived majority.
   \end{block}
 \end{frame}
 }
@@ -100,28 +88,35 @@ Each cluster is a spawn constant: \textbf{90 d} is
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
 \begin{frame}{Caution under selection: the hypothesis}
-  \framesubtitle{Trait distribution of live nodes, 90-day snapshots}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.46\textwidth}
       \centering
+      \smallskip
+      \smallskip
+      \smallskip
+      \smallskip
+      \smallskip
+      \smallskip
       \includegraphics[width=\linewidth]{figures/caution_alive_tertiles_faucet.png}
     \end{column}
     \begin{column}{0.5\textwidth}
-      Mutation is \textbf{mean-reverting toward 0.5}, yet the middle hollows while
-      both extremes grow --- polarization against a centering pull means
-      \textcolor{tud Orange}{genuine selection pressure} is acting.
+      \smallskip
+      \smallskip
+      \smallskip
+      Caution should be \textbf{reverting toward 0.5}, yet mid-caution drops while
+      both extremes grow. Means \textcolor{tud Orange}{selection pressure} is stronger than the artificial center-pull.
 
       \smallskip
-      \textbf{Hypothesis:} the income on/off cycle rewards opposite strategies ---
-      low caution exploits growth (spawn aggressively), high caution survives
-      drought (hoard runway), mid caution exploits neither.
+      \textbf{Hypothesis:} the income on/off cycle rewards opposite strategies.
+      Low caution exploits growth, high caution survives
+      drought, while mid caution benefits from neither.
 
       \smallskip
-      Two falsifiable predictions:
+      \textbf{Two falsifiable predictions:}
       \begin{enumerate}
-        \item low caution reproduces faster during income;
-        \item high caution dies less during drought.
+        \item low-caution reproduce faster during income.
+        \item high-caution die less during pauses.
       \end{enumerate}
     \end{column}
   \end{columns}
@@ -132,27 +127,29 @@ Each cluster is a spawn constant: \textbf{90 d} is
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
 \begin{frame}{Caution under selection: the result}
-  \framesubtitle{Birth and death rates by caution group and phase}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.42\textwidth}
       \centering
+      \smallskip
+      \smallskip
+      \smallskip
+      \smallskip
+
       \includegraphics[width=\linewidth]{figures/caution_birth_death_diff.png}
     \end{column}
     \begin{column}{0.54\textwidth}
+    \smallskip
+      \smallskip
       \begin{exampleblock}{Prediction 1 --- confirmed}
-        Low caution reproduces \(\sim\)50\% faster while income flows
+        Low-caution reproduces \(\sim\)48\% more with income
         (0.0294 vs.\ 0.0198 births/day).
       \end{exampleblock}
-      \begin{alertblock}{Prediction 2 --- disconfirmed}
-        No survival edge --- high caution even dies slightly \emph{more} in drought
-        (0.0088 vs.\ 0.0066 per day). Selection favored low caution: the reproduction
-        gap ran in every phase.
+      \begin{alertblock}{Prediction 2 --- disproved}
+         High-caution has no survival advantage (0.0088 vs.\ 0.0066 deaths per day). Thus, selection favored low caution, the reproduction gap widened with every phase.
       \end{alertblock}
 
-      {\footnotesize The environment was \textbf{income-dominated} --- pauses too
-      short for caution to pay off. The mechanism works; testing the survival half
-      awaits sustained scarcity (\(\to\) future work).}
+      {\footnotesize Income pauses were \textbf{too short} for caution to pay off. In hindsight, income should have been resumed with only 10-20 nodes alive. Testing on better host machine \(\to\) future work.}
     \end{column}
   \end{columns}
 \end{frame}
