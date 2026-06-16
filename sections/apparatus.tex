@@ -11,6 +11,7 @@
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.46\textwidth}
+    \smallskip
       A node is one process running on a leased SporeStack (a Bitcoin-native marketplace) VPS with:
       \begin{itemize}
         \item \textbf{Bitcoin wallet} --- pays its own bills.
@@ -22,6 +23,11 @@
       \textcolor{tud Orange}{No central authority:} bootstraping genesis is the only human action. afterwards the fleet self-governs and no node has authority.
     \end{column}
     \begin{column}{0.5\textwidth}
+    \medskip
+    \medskip
+    \medskip
+    \medskip
+    \medskip
       \centering
       \includegraphics[width=\linewidth]{figures/NodeArchitectureSeedBox.jpg}\\[0.5ex]
       {\footnotesize Arrows trace Bitcoin movements.}
@@ -34,20 +40,25 @@
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
 \begin{frame}{The decision loop}
-  \framesubtitle{The main control logic}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.5\textwidth}
+    \medskip
+    \medskip
+    \medskip
+    \medskip
+    \medskip
       \centering
       \includegraphics[width=\linewidth]{figures/decision_loop_statemachine.png}
     \end{column}
     \begin{column}{0.46\textwidth}
+    \smallskip
       Every 12 h, the node takes the first action whose guard passes:
       \begin{enumerate}
         \item \textbf{Failsafe} --- runway \textcolor{tud Orange}{< 2 days}
           \(\to\) sweep remaining funds to the richest peer.
         \item \textbf{Top-up} --- runway < 30 days \(\to\) buy VPS credits to cover another 30 days (\emph{does not end tick}).
-        \item \textbf{Spawn} --- if eligible \(\to\) provision + fund a child.
+        \item \textbf{Spawn} --- if post-spawn runway enough \(\to\) provision and fund a child.
         \item \textbf{Idle} --- wait for the next tick.
       \end{enumerate}
 
@@ -104,20 +115,20 @@
 
         \smallskip
         \begin{tabular}{cc}
-          caution \(c\) & threshold \\
+          caution \(c\) & effective threshold \\
           0.35 & 81 days \\
           0.5  & 90 days \\
           0.9  & 114 days \\
         \end{tabular}
 
         \smallskip
-        Low caution \(=\) spawn sooner \\  
-        High caution \(=\) retain more 
+        Low caution \(\to\) spawn sooner \\  
+        High caution \(\to\) retain more 
 
         \smallskip
         Mutation Formula:\\
         \(c = c_{\text{parent}} + \mathcal{N}(0,0.05)
-        + 0.2\,(0.5 - c_{\text{parent}})\) Gaussian drift with reversion to 0.5.
+        + 0.2\,(0.5 - c_{\text{parent}})\) \(\to\) Gaussian drift with reversion to 0.5.
 
       \end{textcolumn}
     \end{columns}
