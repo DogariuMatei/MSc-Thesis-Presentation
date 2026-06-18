@@ -20,7 +20,34 @@
   \end{alertblock}
 \end{frame}
 
-%TODO: add here slide that very briefly details the high level goal of the system, how it fits in the open research gap and how it fixes the two drawbacks mentioned on the slide above. only then it leads into the research question below. 
+{
+  \setbeamerfont{itemize/enumerate body}{size=\small}
+  \begin{frame}{Self-replicating decentralized infrastructure}
+    \small
+    We propose a network of \textbf{self-replicating seedbox servers}. Each node \textbf{leases and pays for its own VPS} using Bitcoin, serves content, and
+    \textbf{spawns children autonomously onto commercial hardware}. Genesis is the only human action.
+
+    \medskip
+    \begin{columns}[T, onlytextwidth]
+      \begin{column}{0.48\textwidth}
+        \begin{block}{Durable, decentralized content delivery}
+          Nodes ensure their survival by spending from their local wallets. Content survives as long as the fleet
+          \textbf{economics} hold.
+        \end{block}
+      \end{column}
+      \begin{column}{0.48\textwidth}
+        \begin{block}{The hardware manages itself}
+          Nodes lease, pay for, and replace their own machines. The
+          \textbf{infrastructure layer} is independent from human control.
+        \end{block}
+      \end{column}
+    \end{columns}
+
+    \medskip
+    \textcolor{tud Orange}{\textbf{The research gap is filled --- but does such a
+    fleet actually \emph{survive} and \emph{grow} on its own?}}
+  \end{frame}
+}
 
 {
   \setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
@@ -38,7 +65,7 @@
         \textcolor{tud Orange}{persistence} and \textcolor{tud Orange}{expansion},
         with automated control and no human in the loop after genesis.
         
-        Falsifiable: survival and growth, can be disproved by data.
+        Falsifiable: survival and growth can be invalidated through simulation data.
       \end{textcolumn}
     \end{columns}
   \end{frame}
