@@ -6,15 +6,14 @@
   \section{Conclusion}
 }
 
-%TODO: move the damn title on the left part of the slide
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
-\leftfooterwhitetrue
+\setlength{\splitpos}{-0.55\paperwidth} % colored pane right, title shifts left
+\rightfooterwhitetrue
 \begin{frame}{The answer}
   \begin{columns}[T]
     \begin{textcolumn}
-      \color{white}\large
+      \large
       \textbf{Yes}
 
       \medskip
@@ -22,9 +21,10 @@
       covers or exceeds the per-node rent.}
     \end{textcolumn}
     \begin{textcolumn}
-      \small
+      \color{white}
+        \small
       \textbf{Three contributions:}
-      \begin{enumerate}
+      \begin{enumerate}\color{white}
         \item \textbf{Engineering} --- first self-replicating economic agent that
           buys real infrastructure on an open market.
         \item \textbf{Testing} --- unmodified production code against
@@ -36,7 +36,12 @@
   \end{columns}
 \end{frame}
 }
-\setlength{\splitpos}{0pt}\leftfooterwhitefalse % reset stateful split/footer
+\setlength{\splitpos}{0pt}\rightfooterwhitefalse % reset stateful split/footer
+
+
+
+
+
 
 
 {

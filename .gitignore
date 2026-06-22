@@ -1,14 +1,8 @@
 # Editor / IDE
 .idea
 
-# Project-local (not for sharing)
-CLAUDE.md
-CLAUDE.local.md
-TODO.md
-presentation.md
-
 # ---------------------------------------------------------------------------
-# LaTeX build artifacts (all regenerated on every compile — never commit)
+# LaTeX build artifacts
 # ---------------------------------------------------------------------------
 
 # Core auxiliary
@@ -41,6 +35,11 @@ presentation.md
 *.snm
 *.vrb
 *.pre
+
+CLAUDE.md
+CLAUDE.local.md
+TODO.md
+presentation.md
 
 # Index / glossary / acronyms (in case you add them later)
 *.idx

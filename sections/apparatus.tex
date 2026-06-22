@@ -93,15 +93,14 @@
 \end{frame}
 }
 
-%TODO move damn title on the left
 {
-  \setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
-  \leftfooterwhitetrue
-  \begin{frame}{The heritable caution trait}
+  \setlength{\splitpos}{-0.55\paperwidth} % colored pane right, title shifts left
+  \rightfooterwhitetrue
+  \begin{frame}{Caution trait}
     \begin{columns}[T]
       \begin{textcolumn}
-        \color{white}\large
-        \textbf{Caution} --- the single trait under selection.
+        \large
+        The single trait under selection.
 
         \medskip
         \medskip
@@ -111,9 +110,11 @@
         \medskip
         Value \(c \in [0.35, 0.9]\), with the genesis node starting at \(c = 0.5\).
         Rest is mutated then inherited.
+
       \end{textcolumn}
       \begin{textcolumn}
-        \footnotesize
+        \color{white}
+          \footnotesize
         Caution scales the spawn threshold:
 
         \smallskip
@@ -125,16 +126,15 @@
         \end{tabular}
 
         \smallskip
-        Low caution \(\to\) spawn sooner \\  
-        High caution \(\to\) retain more 
+        Low caution \(\to\) spawn sooner \\
+        High caution \(\to\) retain more
 
         \smallskip
         Mutation Formula:\\
         \(c_{parent} + \mathcal{N}(0,0.05)
         + 0.2\,(0.5 - c_{\text{parent}})\) \(\to\) Gaussian drift with reversion to 0.5.
-
       \end{textcolumn}
     \end{columns}
   \end{frame}
 }
-\setlength{\splitpos}{0pt}\leftfooterwhitefalse % reset stateful split/footer
+\setlength{\splitpos}{0pt}\rightfooterwhitefalse % reset stateful split/footer
