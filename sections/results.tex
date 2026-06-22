@@ -17,36 +17,32 @@
 \smallskip
 \smallskip
 \smallskip
-  \framesubtitle{Fixed budget predictably spent?}
-  \centerline{\includegraphics[width=0.6\linewidth]{figures/population_no_faucet.png}}
-  \smallskip
+  \centerline{\includegraphics[width=0.7\linewidth]{figures/population_no_faucet.png}}
   \small
   \begin{itemize}
-    \item Every €3.27 buys exactly one day, so the fleet's
-      \textbf{total lifespan is} at 3061 node-days (mean 93 days @ 33 nodes).
+    \item Every €3.27 buys one day, so the fleet's
+      \textbf{total lifespan is} 3061 node-days (mean 93 days @ 33 nodes).
     \item One ``old'' survivor, as the failsafe concentrates residual funds into one node.
   \end{itemize}
-  \textcolor{tud Orange}{\textbf{The closed-system prediction holds: a once-funded
-  fleet cannot self-sustain.}}
 \end{frame}
 }
 
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{The lifespan clusters were predictable}
+\begin{frame}{No-income run}
 \smallskip
 \smallskip
 \smallskip
   \centerline{\includegraphics[width=0.65\linewidth]{figures/lifespan_hist_no_faucet.png}}
 
 \small
-Each cluster is a spawn constant: \textbf{90 d} is
-      the post-spawn runway any parent retains. \textbf{60 d} and \textbf{30 d} are the last two generations of children.
+Each cluster is derived from a spawn constant: \textbf{90 d} is
+      the post-spawn runway parents retain. \textbf{60 d} and \textbf{30 d} are the last two generations of children.
   
 
   \begin{exampleblock}{Specification met}
-    The cluster positions should be fixed, with the histogram confirming.
+    The cluster positions should be fixed beforehand, with the histogram confirming.
   \end{exampleblock}
 \end{frame}
 }
@@ -55,12 +51,13 @@ Each cluster is a spawn constant: \textbf{90 d} is
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
 \begin{frame}{Income run}
-  \framesubtitle{Open system}
-  \centerline{\includegraphics[width=0.60\linewidth]{figures/population_faucet.png}}
+    \smallskip
+    \smallskip
+  \centerline{\includegraphics[width=0.75\linewidth]{figures/population_faucet.png}}
   \small
   \begin{itemize}
-    \item The 40--80 swings are \textbf{caused by the node cap}, as income is cut at 60 nodes and restored at 40.
-    \item Each spawn spreads capital over more nodes, shrinking per-node surplus. At these node counts, the cap masks it (\(\to\) future work).
+    \item Income is cut at 60 nodes and restored at 40.
+    \item The simulation ends when the host machine cannot hold the BTC chain in memory.
   \end{itemize}
   \textcolor{tud Orange}{\textbf{Introducing income makes the fleet persist past 510 days.}}
 \end{frame}
@@ -91,33 +88,24 @@ Each cluster is a spawn constant: \textbf{90 d} is
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.46\textwidth}
-      \centering
-      \smallskip
-      \smallskip
-      \smallskip
-      \smallskip
-      \smallskip
-      \smallskip
+      \medskip
+      \medskip
+      \medskip
       \includegraphics[width=\linewidth]{figures/caution_alive_tertiles_faucet.png}
     \end{column}
     \begin{column}{0.5\textwidth}
-      \smallskip
-      \smallskip
-      \smallskip
-      Caution should be \textbf{reverting toward 0.5}, yet mid-caution drops while
-      both extremes grow. Means \textcolor{tud Orange}{selection pressure} is stronger than the artificial center-pull.
+      \medskip
+      \medskip
+      \medskip
+      Caution should be \textbf{reverting to 0.5}. Observing the opposite means \textcolor{tud Orange}{selection pressure} is stronger than the artificial center-pull.
 
-      \smallskip
-      \textbf{Hypothesis:} the income on/off cycle rewards opposite strategies.
-      Low caution exploits growth, high caution survives
-      drought, while mid caution benefits from neither.
+      \medskip
+      \medskip
+      \medskip
+      \begin{block}{Secondary Hypothesis}
+          The income cycle rewards opposite strategies. Low caution exploits growth, high caution survives drought, while mid caution benefits from neither.
+      \end{block}
 
-      \smallskip
-      \textbf{Two falsifiable predictions:}
-      \begin{enumerate}
-        \item low-caution reproduce faster during income.
-        \item high-caution die less during pauses.
-      \end{enumerate}
     \end{column}
   \end{columns}
 \end{frame}
@@ -126,7 +114,7 @@ Each cluster is a spawn constant: \textbf{90 d} is
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{Caution under selection: the result}
+\begin{frame}{Secondary hypothesis result}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.42\textwidth}
@@ -146,10 +134,10 @@ Each cluster is a spawn constant: \textbf{90 d} is
         (0.0294 vs.\ 0.0198 births/day).
       \end{exampleblock}
       \begin{alertblock}{Prediction 2 --- disproved}
-         High-caution has no survival advantage (0.0088 vs.\ 0.0066 deaths per day). Thus, selection favored low caution, the reproduction gap widened with every phase.
+         High-caution has no survival advantage (0.0088 vs.\ 0.0066 deaths per day).
       \end{alertblock}
 
-      {\footnotesize Income pauses were \textbf{too short} for caution to pay off. In hindsight, income should have been resumed with only 10-20 nodes alive. Testing on better host machine \(\to\) future work.}
+      {\footnotesize \(\to\) Income pauses were \textbf{too short} for extra caution to pay off. Testing on a more powerful host machine \(\to\) future work.}
     \end{column}
   \end{columns}
 \end{frame}

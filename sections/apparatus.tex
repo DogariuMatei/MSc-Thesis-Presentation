@@ -1,26 +1,27 @@
 
 {
   \renewcommand{\sectionsubtitle}{How a node lives, reproduces, mutates, and dies}
-  \section{The system}
+  \section{EternalSeedBox}
 }
 
 
 {
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{System at a glance: one autonomous node}
+\begin{frame}{Single node overview}
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.46\textwidth}
     \smallskip
-      A node is one process running on a leased SporeStack (a Bitcoin-native marketplace) VPS with:
+      A node is a process running on a leased SporeStack VPS with:
       \begin{itemize}
-        \item \textbf{Bitcoin wallet} --- pays its own bills.
-        \item \textbf{Seedbox} --- serves Creative Commons content.
-        \item \textbf{IPv8 overlay} --- gossips health telemetry to peers.
-        \item \textbf{Decision logic} --- the core actions.
+        \item \textbf{Bitcoin wallet}
+        \item \textbf{Seedbox}
+        \item \textbf{IPv8 overlay}
+        \item \textbf{Decision loop}
       \end{itemize}
-
-      \textcolor{tud Orange}{No central authority:} bootstraping genesis is the only human action. afterwards the fleet self-governs and no node has authority.
+        \medskip
+        \medskip
+      \textcolor{tud Orange}{No central authority:} The fleet self-governs and no node has authority.
     \end{column}
     \begin{column}{0.5\textwidth}
     \medskip
@@ -53,17 +54,17 @@
     \end{column}
     \begin{column}{0.46\textwidth}
     \smallskip
-      Every 12 h, the node takes the first action whose guard passes:
+      Every 12 h, a node can:
       \begin{enumerate}
         \item \textbf{Failsafe} --- runway \textcolor{tud Orange}{< 2 days}
           \(\to\) sweep remaining funds to the richest peer.
-        \item \textbf{Top-up} --- runway < 30 days \(\to\) buy VPS credits to cover another 30 days (\emph{does not end tick}).
+        \item \textbf{Top-up} --- runway < \textcolor{tud Orange}{30 days} \(\to\) buy VPS credits to cover another 30 days
         \item \textbf{Spawn} --- if post-spawn runway enough \(\to\) provision and fund a child.
         \item \textbf{Idle} --- wait for the next tick.
       \end{enumerate}
 
       \medskip
-      \textbf{Identical code} runs in every node.
+      \textcolor{tud Orange}{Identical code runs on every node.}
     \end{column}
   \end{columns}
 \end{frame}
@@ -74,27 +75,29 @@
 \setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
 \begin{frame}{Reproduction mechanics}
   \small
-  \begin{block}{Check post-spawn runway, not before}
-    A node spawns only if its \textbf{post-spawn total runway}
-    \(\geq 60\times(1+\text{caution})\) days \emph{and} its wallet can pay for the
-    child's VPS. A node's \textbf{total runway} \(=\) VPS days \(+\) SporeStack credit
-    \(+\) BTC.
+  \begin{block}{Check post-spawn total runway}
+    A node's \textbf{total runway} \(=\) VPS days \(+\) SporeStack credit
+    \(+\) BTC. A node spawns only if it is left with \(\geq 60\times(1+c)\) days of runway after spawning, where \(c\) is the caution value.
   \end{block}
 
   \begin{itemize}
-    \item The child starts with a \textbf{30-day} pre-paid VPS and inherits
-      \textbf{40\%} of the Bitcoin remaining \emph{after} the parent covers the
-      child's expenses.
+    \item A child starts with a \textbf{30-day} pre-paid VPS and inherits
+      \textbf{40\%} of the parent's remaining Bitcoin.
     \item Actual Pipeline: mutate caution \(\to\) provision VPS \(\to\) fresh BTC wallet \(\to\) deploy code over SSH \(\to\) transfer inheritance.
   \end{itemize}
+
+  \medskip
+  \medskip
+  \medskip
+  \textcolor{tud Orange}{Nodes must remain with significant runway \textbf{after} spawning a child.}
 \end{frame}
 }
 
-
+%TODO move damn title on the left
 {
   \setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
   \leftfooterwhitetrue
-  \begin{frame}{The heritable trait}
+  \begin{frame}{The heritable caution trait}
     \begin{columns}[T]
       \begin{textcolumn}
         \color{white}\large
@@ -107,11 +110,11 @@
         \medskip
         \medskip
         Value \(c \in [0.35, 0.9]\), with the genesis node starting at \(c = 0.5\).
-        Everything else is inherited.
+        Rest is mutated then inherited.
       \end{textcolumn}
       \begin{textcolumn}
         \footnotesize
-        It scales the spawn threshold \(60\times(1+c)\):
+        Caution scales the spawn threshold:
 
         \smallskip
         \begin{tabular}{cc}
@@ -127,7 +130,7 @@
 
         \smallskip
         Mutation Formula:\\
-        \(c = c_{\text{parent}} + \mathcal{N}(0,0.05)
+        \(c_{parent} + \mathcal{N}(0,0.05)
         + 0.2\,(0.5 - c_{\text{parent}})\) \(\to\) Gaussian drift with reversion to 0.5.
 
       \end{textcolumn}

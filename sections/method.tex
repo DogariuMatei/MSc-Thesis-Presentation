@@ -11,8 +11,8 @@
   \small
   \begin{columns}[T, onlytextwidth]
     \begin{column}{0.44\textwidth}
-      \begin{block}{Unchanged from live deployment}
-        Node code is executed \textbf{identically} to a real deployment. Only changes relate to the compressed-time intervals: 1 sim-day \(\approx\) \qty{22}{s}.
+      \begin{block}{Unchanged node code}
+        Core node code is executed \textbf{identically} to a real deployment. Only changes are time intervals (1 sim-day \(\approx\) \qty{22}{s}).
       \end{block}
     \end{column}
     \begin{column}{0.52\textwidth}
@@ -24,7 +24,7 @@
         \item SporeStack API \(\to\) host-side \textbf{mock}, identical endpoints.
           Invoices paid in real regtest BTC.
         \item VPS \(\to\) local \textbf{Alpine LXC containers}. Parent deploys over the production SSH pipeline.
-        \item Peer discovery via the same IPv8 tracker. An IPv8 bootstrap server keeps the fleet offline.
+        \item Peer discovery via the same IPv8 tracker. A local IPv8 bootstrap server keeps the fleet offline.
       \end{itemize}
     \end{column}
   \end{columns}
@@ -48,8 +48,6 @@
       \begin{itemize}
         \item Genesis seeded with  \textbf{only €10,000}.
         \item Every node spends only its \textbf{initial runway and inheritance}.
-        \item A \textcolor{tud Orange}{falsifiable closed-system prediction}: the
-          fleet cannot sustain itself indefinitely.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
@@ -58,10 +56,9 @@
       \begin{itemize}
         \item Mock income pays the fleet
         \item Per-node income \(\approx\)
-          invariant (scales with node count).
+          invariant.
         \item Uneven daily shares.
-        \item \textbf{Node cap}: income suspended at 60 nodes, resumed at 40
-          \(\to\) alternating growth/drought.
+        \item Income suspended at 60 nodes, resumed at 40 \(\to\) alternate growth/drought.
       \end{itemize}
     \end{column}
   \end{columns}

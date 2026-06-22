@@ -1,54 +1,96 @@
 {
   \renewcommand{\sectionsubtitle}{Content distribution without a human operator}
-  \section{Research Angle}
+  \section{Intro \& Research Angle}
+}
+
+{
+\setbeamerfont{footnote}{size=\scriptsize} % shrink full-reference citation footnotes
+\footerinfootnotestrue % full-reference footnotes -> move footer into footnote band
+\begin{frame}{Self-replicating infrastructure}
+  Inspired by von Neumann's\cite{vonneumann} theory of cellular automata, we set out to build the first self-replicating system that runs on \textbf{real} commercial hardware.
+  \begin{itemize}
+    \item \textbf{Self-replication}: the ability of an entity to autonomously reproduce. 
+    \item \textbf{In our case}: spawn identical clones that use the same software and run on bought hardware. Self-scaling network.
+  \end{itemize}
+  \medskip
+  \medskip
+  \medskip
+  \medskip
+  \medskip
+  \centerline{\includegraphics[width=0.8\linewidth]{figures/self-replication.pdf}}
+\end{frame}
+}
+
+{
+\begin{frame}{Use case}
+    \medskip
+    CDN's are operated by humans who serve the entity, rather than the content owners.
+    \begin{itemize}
+        \item Traditional CDN's concentrate operational control and content availability.
+        \item We decentralize content, relinquish control, and replace humans with protocol.
+    \end{itemize}
+    To put it simply, we created an \textbf{alternative to YouTube's services}, by changing the delivery mechanism for Creative Commons content.
+    \medskip
+    \medskip
+    \medskip
+    \begin{block}{From theory to real-world service}
+        Self-replication is just the technical underpinning of the overarching goal: liberating mainstream content delivery networks.
+    \end{block}
+    
+\end{frame}
 }
 
 
-\begin{frame}{Centralized distribution means a single point of control}
-  Mainstream content distribution concentrates control on one entity
-  that owns both the hardware and the content.
-  \begin{itemize}
-    \item An operator decides what stays online. Availability depends
-      on profitability, policies, and legality.
-    \item Peer-to-peer protocols distribute the content
-      across many nodes, but the hardware is
-      still \emph{managed} by humans.
-  \end{itemize}
+{
+\begin{frame}{Just a P2P Network?}
+    \medskip
+    \textbf{Yes}, but it is complicated. We propose a network of \textbf{self-replicating seedbox servers}.
+    \begin{itemize}
+        \item Peer-to-peer networks distribute content
+      across nodes, but the hardware is still managed by humans.
+        \item We want to replace human oversight and control with \textbf{autonomous software agents}.
+    \end{itemize}
 
-  \begin{alertblock}{The open research gap}
+    \medskip
+    \medskip
+    \medskip
+    \begin{alertblock}{The open research gap}
     Can the \textbf{infrastructure layer itself} be operator-independent, with no human controlling it after genesis?
-  \end{alertblock}
+    \end{alertblock}
+    
 \end{frame}
+}
+
 
 {
   \setbeamerfont{itemize/enumerate body}{size=\small}
-  \begin{frame}{Self-replicating decentralized infrastructure}
-    \small
-    We propose a network of \textbf{self-replicating seedbox servers}. Each node \textbf{leases and pays for its own VPS} using Bitcoin, serves content, and
-    \textbf{spawns children autonomously onto commercial hardware}. Genesis is the only human action.
+  \begin{frame}{Self-replicating decentralized CDN infrastructure}
+    We propose a network of \textbf{self-replicating seedbox servers} that: 
+    \medskip
+    \begin{itemize}
+        \item Run on commercial VPS instances.
+        \item Rent the hardware themselves using Bitcoin.
+        \item Seed Creative Commons YouTube content over BitTorrent.
+        \item Can spawn children autonomously.
+        \item Only human action is bootstrapping the genesis node.
+    \end{itemize}
 
     \medskip
-    \begin{columns}[T, onlytextwidth]
-      \begin{column}{0.48\textwidth}
-        \begin{block}{Durable, decentralized content delivery}
-          Nodes ensure their survival by spending from their local wallets. Content survives as long as the fleet
-          \textbf{economics} hold.
-        \end{block}
-      \end{column}
-      \begin{column}{0.48\textwidth}
-        \begin{block}{The hardware manages itself}
-          Nodes lease, pay for, and replace their own machines. The
-          \textbf{infrastructure layer} is independent from human control.
-        \end{block}
-      \end{column}
-    \end{columns}
-
-    \medskip
-    \textcolor{tud Orange}{\textbf{The research gap is filled --- but does such a
+    \textcolor{tud Orange}{\textbf{The research gap is filled --- but can such a
     fleet actually \emph{survive} and \emph{grow} on its own?}}
   \end{frame}
 }
 
+{
+\begin{frame}{EternalSeedBox}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/torrents-frontend-full.png}
+\end{figure}
+\end{frame}
+}
+
+%TODO put goddamn title on the left, not right.
 {
   \setlength{\splitpos}{0.55\paperwidth} % colored pane left, title shifts right
   \leftfooterwhitetrue
@@ -56,16 +98,16 @@
     \begin{columns}[T]
       \begin{textcolumn}
         \color{white}\large
-        Can a network of autonomous software agents, controlled only by inherited economic
-        parameters, \textbf{survive} and \textbf{grow} without further human
+        Can a fleet of autonomous software agents, controlled only by inherited economic parameters, \textbf{survive} and \textbf{grow} without further human
         intervention?
       \end{textcolumn}
       \begin{textcolumn}
-        The hypothesis under test: two outcomes must hold, network
-        \textcolor{tud Orange}{persistence} and \textcolor{tud Orange}{expansion},
-        with automated control and no human in the loop after genesis.
+        \textbf{The main hypothesis}: network
+        \textcolor{tud Orange}{persistence} and \textcolor{tud Orange}{expansion} according to specifications must be observed.\\
         
-        Falsifiable: survival and growth can be invalidated through simulation data.
+        \medskip
+        
+        \textbf{Secondary hypothesis}: economically cautious nodes \textcolor{tud Orange}{survive longer} during financial downturn, and less-cautious nodes \textcolor{tud Orange}{spawn more} during financial excess.  
       \end{textcolumn}
     \end{columns}
   \end{frame}
@@ -73,37 +115,22 @@
 \setlength{\splitpos}{0pt}\leftfooterwhitefalse % reset stateful split/footer
 
 
-{
-\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\setbeamerfont{footnote}{size=\scriptsize} % shrink full-reference citation footnotes
-\footerinfootnotestrue % full-reference footnotes -> move footer into footnote band
-\begin{frame}{Where this sits scientifically}
-  \small
-  \begin{columns}[T, onlytextwidth]
-    \begin{column}{0.48\textwidth}
-      Prior self-replicators ran on simulated resources:
-      \begin{itemize}
-        \item von Neumann's automata\cite{vonneumann} and Ray's
-          Tierra\cite{tierra}. Running on simulated CPU cycles
-          and RAM.
-        \item DAOs and autonomic computing self-manage, but only over
-          virtual, quota-based resources.
-      \end{itemize}
 
-      \textcolor{tud Orange}{\textbf{Research Novelty:}} first self-replicating system on
-      \textbf{real infrastructure paid for with real money}.
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      We propose three contributions:
+
+
+%TODO: make this more like research novelty
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} 
+\begin{frame}{Research Novelty}
+    \small
+    We propose three contributions:
       \begin{enumerate}
-        \item \textbf{Engineering} --- first self-replicating economic agent that
-          buys real infrastructure on an open market.
-        \item \textbf{Method} --- unmodified production code run against a replica
-          Bitcoin network and a mock VPS marketplace.
+        \item \textbf{Engineering} --- first self-replicating economic agent that buys its own infrastructure on an open market.
+        \item \textbf{Testing Method} --- unmodified production code run against a replica Bitcoin network and a mock VPS marketplace.
         \item \textbf{Empirical} --- fleet dynamics and one heritable trait under
           selection.
       \end{enumerate}
-    \end{column}
-  \end{columns}
+
+      \textcolor{tud Orange}{\textbf{Research Novelty:}} first self-replicating system on \textbf{real commercial infrastructure paid for with real money}.
 \end{frame}
 }

@@ -1,8 +1,44 @@
 
 {
   \renewcommand{\sectionsubtitle}{Fleet economics, and the limits of the evidence}
-  \section{Viability \& validity}
+  \section{Discussion}
 }
+
+
+{
+\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
+\begin{frame}{What the runs establish}
+  \medskip
+  \small
+  \begin{columns}[T, onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \begin{exampleblock}{Internal validity}
+        \begin{itemize}
+          \item Production code works as specified.
+          \item Replication verified under \textbf{both} the closed and income
+            conditions.
+          \item Fleet supports high node turnover.
+          \item Genesis parameters are ultimately fully customizable.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{alertblock}{Limitations}
+        \begin{itemize}
+          \item Forced node cap of 60, not economics.
+          \item Regtest drops transactions, so node economy is inflated and uncertain.
+          \item Single VPS provider.
+          \item Revenue mechanism not yet designed.
+          \item User content mechanism not designed.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+
+  \textcolor{tud Orange}{\textbf{The mechanism is validated. Real-world viability remains to be.}}
+\end{frame}
+}
+
 
 
 {
@@ -47,40 +83,3 @@
 \end{frame}
 }
 
-
-{
-\setbeamerfont{itemize/enumerate body}{size=\small} % template pins lists to \normalsize
-\begin{frame}{What the runs establish}
-  \medskip
-  \small
-  \begin{columns}[T, onlytextwidth]
-    \begin{column}{0.46\textwidth}
-      \begin{exampleblock}{Internal validity}
-        \begin{itemize}
-          \item Unmodified production code against faithful \textbf{Bitcoin} and
-            \textbf{SporeStack} replicas.
-          \item Replication verified under \textbf{both} the closed and income
-            conditions.
-          \item The closed-system prediction was met.
-          \item Genesis parameters are ultimately fully customizable.
-        \end{itemize}
-      \end{exampleblock}
-    \end{column}
-    \begin{column}{0.5\textwidth}
-      \begin{alertblock}{External validity}
-        \begin{itemize}
-          \item Forced node cap 60, not
-            economics.
-          \item Regtest drops \(\sim\)transactions \(\to\) income set \(10\times\)
-            rent \(\to\) economy inflated and unmeasurable.
-          \item Single VPS provider (SporeStack) --- no fallback.
-          \item Revenue mechanism not yet designed.
-          \item User content mechanism not designed.
-        \end{itemize}
-      \end{alertblock}
-    \end{column}
-  \end{columns}
-
-  \textcolor{tud Orange}{\textbf{The mechanism is validated. Real-world viability is not.}}
-\end{frame}
-}
